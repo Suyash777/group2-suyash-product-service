@@ -1,0 +1,59 @@
+package com.prod.services;
+
+import java.util.Set;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.prod.dto.ProductDto;
+import com.prod.entities.Categories;
+import com.prod.entities.Product;
+import com.prod.entities.ProductType;
+import com.prod.repositories.CategoriesRepository;
+import com.prod.repositories.ProductRepository;
+import com.prod.repositories.ProductTypeRepository;
+
+@Service
+public class ProductServiceImpl implements ProductService {
+
+	@Autowired
+	private ProductRepository productRepo;
+	@Autowired 
+	ProductTypeRepository productTypeRepo;
+	@Autowired
+	CategoriesRepository categoriesRepo;
+	@Autowired
+	private ModelMapper modelMapper;
+	
+
+	public ProductServiceImpl(ProductRepository productRepo, ProductTypeRepository productTypeRepo,
+			CategoriesRepository categoriesRepo, ModelMapper modelMapper) {
+		super();
+		this.productRepo = productRepo;
+		this.productTypeRepo = productTypeRepo;
+		this.categoriesRepo = categoriesRepo;
+		this.modelMapper = modelMapper;
+	}
+
+	@Override
+	public ProductDto saveProduct(ProductDto productDto) {
+		ProductType productType = productTypeRepo.findByProductTypeKey(productDto.getProductTypeKey());
+		Categories category = categoriesRepo.findByCategoryKey(productDto.getCategoryKey());
+		Set<Categories> categories;
+		categories.add(category);
+		Product product = modelMapper.map(productDto, Product.class);
+		product.setCategories(categories);
+		product.setProductType(productType);
+		Product savedProduct = productRepo.save(product);
+		return modelMapper.map(savedProduct, ProductDto.class);
+	}
+
+	@Override
+	public ProductDto getProductByKey(String productKey) {
+		Product product = productRepo.findByProductKey(productKey);
+
+		return modelMapper.map(product, ProductDto.class);
+	}
+
+}

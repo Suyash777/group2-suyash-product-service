@@ -1,0 +1,31 @@
+package com.prod.services;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.prod.dto.CategoriesDto;
+import com.prod.repositories.CategoriesRepository;
+import com.prod.repositories.ProductTypeRepository;
+
+@Service
+public class CategoriesServiceImpl implements CategoriesService {
+	
+	@Autowired
+	private CategoriesRepository categoriesRepo;
+	@Autowired
+    private ModelMapper modelMapper;
+
+	@Override
+	public CategoriesDto saveCategory(CategoriesDto categoriesDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CategoriesDto getCategoryByKey(String categoryKey) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

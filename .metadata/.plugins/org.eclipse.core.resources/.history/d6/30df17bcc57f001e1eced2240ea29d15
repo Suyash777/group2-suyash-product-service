@@ -1,0 +1,5 @@
+package com.prod.services;
+
+public class ProductTypeServiceImpl {
+
+}

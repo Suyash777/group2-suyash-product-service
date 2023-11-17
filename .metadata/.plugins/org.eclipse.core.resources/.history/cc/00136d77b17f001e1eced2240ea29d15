@@ -1,0 +1,12 @@
+
+spring.datasource.url=jdbc:mysql://localhost:3306/mydb
+spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver
+spring.datasource.username=root
+spring.datasource.password=root
+ 
+ 
+#none / create-only / drop / create-drop, validate, update
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.generate-ddl=true

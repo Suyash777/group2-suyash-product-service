@@ -1,0 +1,11 @@
+package com.prod.repositories;
+
+import org.springframework.stereotype.Repository;
+
+import com.prod.entities.Product;
+
+@Repository
+public interface ProductRepository {
+
+	Product findByProductKey(String productKey);
+}

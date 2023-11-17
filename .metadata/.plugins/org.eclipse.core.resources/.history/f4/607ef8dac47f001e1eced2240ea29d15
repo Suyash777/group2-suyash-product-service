@@ -1,0 +1,5 @@
+package com.prod.repositories;
+
+public interface ProductTypeRepository {
+
+}

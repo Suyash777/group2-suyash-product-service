@@ -1,0 +1,69 @@
+package com.prod.dto;
+
+import com.prod.entities.Product;
+
+
+public class CategoriesDto {
+
+	private long id;
+	private String categoryName;
+	private String categoryKey;
+	private String description;
+	private Product product;
+	
+	public CategoriesDto() {
+		super();
+	}
+
+	public CategoriesDto(long id, String categoryName,String categoryKey, String description, Product product) {
+		super();
+		this.id = id;
+		this.categoryName = categoryName;
+		this.categoryKey = categoryKey;
+		this.description = description;
+		this.product = product;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
+
+	public String getCategoryKey() {
+		return categoryKey;
+	}
+
+	public void setCategoryKey(String categoryKey) {
+		this.categoryKey = categoryKey;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	} 
+	
+	
+}
