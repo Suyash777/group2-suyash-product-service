@@ -1,8 +1,0 @@
-package com.prod.services;
-
-import com.prod.dto.CategoriesDto;
-
-public interface CategoriesService {
-
-	CategoriesDto saveCategory(CategoriesDto categoriesDto);
-}
