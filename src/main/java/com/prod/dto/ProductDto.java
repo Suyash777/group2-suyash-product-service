@@ -18,8 +18,6 @@ public class ProductDto {
 	private Set<ProductVariant> variants;
 	
 	
-	
-	
 	public ProductDto() {
 		super();
 	}

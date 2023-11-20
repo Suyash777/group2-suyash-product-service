@@ -1,6 +1,8 @@
 package com.prod.services;
 
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,6 +49,31 @@ public class ProductServiceImpl implements ProductService {
 		Product product = productRepo.findByProductKey(productKey);
 
 		return modelMapper.map(product, ProductDto.class);
+	}
+
+	@Override
+	public List<Product> getAllProduct() {
+		return productRepo.findAll();
+	}
+
+	@Override
+	public ProductDto updateProductByKey(ProductDto productDto, String productKey) {
+		Product existingProduct = productRepo.findByProductKey(productKey);
+
+		if (existingProduct != null) {
+			existingProduct.setProductKey(productDto.getProductKey());
+			existingProduct.setProductName(productDto.getProductName());
+			existingProduct.setProductDescription(productDto.getProductDescription());
+			existingProduct.setCategories(productDto.getCategories());
+			existingProduct.setProductType(productTypeRepo.findByProductTypeKey(productDto.getProductTypeKey()));
+			existingProduct.setMasterVariant(productDto.getMasterVariant());
+			existingProduct.setVariants(productDto.getVariants());
+			Product savedProduct = productRepo.save(existingProduct);
+
+			return modelMapper.map(savedProduct, ProductDto.class);
+		}
+
+		return null;
 	}
 
 }

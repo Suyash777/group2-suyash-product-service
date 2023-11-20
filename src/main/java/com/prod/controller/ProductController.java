@@ -1,16 +1,21 @@
 package com.prod.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.prod.dto.ProductDto;
+import com.prod.dto.ProductVariantDto;
+import com.prod.entities.Product;
 import com.prod.services.ProductService;
 
 @RestController
@@ -36,4 +41,20 @@ public class ProductController {
 		ProductDto productDto = productService.getProductByKey(productKey);
          return ResponseEntity.ok(productDto);
     }
+	
+	@GetMapping
+	public ResponseEntity<List<Product>> getAllProduct() {
+		return ResponseEntity.ok(productService.getAllProduct());
+	}
+	
+	@PutMapping("/{productKey}")
+	public ResponseEntity<ProductDto> updateProductByKey(@RequestBody ProductDto productDto,
+														@PathVariable("productKey") String productKey) {
+		ProductDto updateProductDto = productService.updateProductByKey(productDto,productKey);
+		if (updateProductDto != null) {
+	        return new ResponseEntity<>(updateProductDto, HttpStatus.OK);
+	    } else {
+	        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	    }
+	}
 }

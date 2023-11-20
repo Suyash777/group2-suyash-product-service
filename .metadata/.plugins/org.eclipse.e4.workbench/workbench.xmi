@@ -120,7 +120,7 @@
             </children>
             <children xsi:type="basic:PartSashContainer" xmi:id="_FToCMIIDEe682sddLGEaAw" containerData="7500" selectedElement="_FToCMYIDEe682sddLGEaAw">
               <children xsi:type="basic:PartSashContainer" xmi:id="_FToCMYIDEe682sddLGEaAw" containerData="7500" selectedElement="_FToCMoIDEe682sddLGEaAw" horizontal="true">
-                <children xsi:type="basic:PartSashContainer" xmi:id="_FToCMoIDEe682sddLGEaAw" containerData="5000" selectedElement="_FToCM4IDEe682sddLGEaAw">
+                <children xsi:type="basic:PartSashContainer" xmi:id="_FToCMoIDEe682sddLGEaAw" containerData="5000" selectedElement="_FToCNIIDEe682sddLGEaAw">
                   <children xsi:type="advanced:Placeholder" xmi:id="_FToCM4IDEe682sddLGEaAw" elementId="org.eclipse.ui.editorss" containerData="5624" ref="_FTpQe4IDEe682sddLGEaAw"/>
                   <children xsi:type="basic:PartStack" xmi:id="_FToCNIIDEe682sddLGEaAw" elementId="PartStack@19a9062e" containerData="4376" selectedElement="_FToCNYIDEe682sddLGEaAw">
                     <children xsi:type="advanced:Placeholder" xmi:id="_FToCNYIDEe682sddLGEaAw" elementId="org.eclipse.ui.console.ConsoleView" ref="_FTp4uYIDEe682sddLGEaAw" closeable="true">
@@ -394,7 +394,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_FTqe6YIDEe682sddLGEaAw" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_Ebt2cIQ3Ee6HUNz--gpqXQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_FTv_loIDEe682sddLGEaAw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_lFUl0IdsEe6A6tCa_iRoNg" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_FTv_loIDEe682sddLGEaAw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_FTqe9oIDEe682sddLGEaAw" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -402,8 +402,8 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_FTqe-IIDEe682sddLGEaAw" elementId="org.eclipse.ui.workbench.edit">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_Ebw5wIQ3Ee6HUNz--gpqXQ" elementId="undo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/undo_edit.png" tooltip="Undo" enabled="false" command="_FTvYYYIDEe682sddLGEaAw"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_EbyH4IQ3Ee6HUNz--gpqXQ" elementId="redo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/redo_edit.png" tooltip="Redo" enabled="false" command="_FTvZEIIDEe682sddLGEaAw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_lFYQMIdsEe6A6tCa_iRoNg" elementId="undo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/undo_edit.png" tooltip="Undo" enabled="false" command="_FTvYYYIDEe682sddLGEaAw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_lFaFYIdsEe6A6tCa_iRoNg" elementId="redo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/redo_edit.png" tooltip="Redo" enabled="false" command="_FTvZEIIDEe682sddLGEaAw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_FTqe_IIDEe682sddLGEaAw" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -427,7 +427,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_FTqfQoIDEe682sddLGEaAw" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_Eb1LMIQ3Ee6HUNz--gpqXQ" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_FTv_KYIDEe682sddLGEaAw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_lFdvwIdsEe6A6tCa_iRoNg" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_FTv_KYIDEe682sddLGEaAw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_FTqfUIIDEe682sddLGEaAw" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
