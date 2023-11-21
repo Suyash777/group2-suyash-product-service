@@ -11,4 +11,5 @@ public interface ProductService {
 	ProductDto getProductByKey(String productKey);
 	List<Product> getAllProduct();
 	ProductDto updateProductByKey(ProductDto productDto, String productKey);
+	Product deleteProductByKey(String productKey);
 }

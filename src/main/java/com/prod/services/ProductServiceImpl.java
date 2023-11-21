@@ -76,4 +76,15 @@ public class ProductServiceImpl implements ProductService {
 		return null;
 	}
 
+	@Override
+	public Product deleteProductByKey(String productKey) {
+		Product product =productRepo.findByProductKey(productKey);
+		if(product!=null) {
+			productRepo.delete(product);
+			return product; 
+		}else {
+		return null;
+		}
+	}
+
 }
