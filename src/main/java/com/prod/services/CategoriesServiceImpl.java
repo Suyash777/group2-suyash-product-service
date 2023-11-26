@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.prod.dto.CategoriesDto;
 import com.prod.entities.Categories;
+import com.prod.exceptions.ResourceNotFoundException;
 import com.prod.repositories.CategoriesRepository;
 
 @Service
@@ -35,7 +36,11 @@ public class CategoriesServiceImpl implements CategoriesService {
 	public CategoriesDto getCategoryByKey(String categoryKey) {
 		Categories categories = categoriesRepo.findByCategoryKey(categoryKey);
 
-		return modelMapper.map(categories, CategoriesDto.class);
+		if(categories!=null) {
+			return modelMapper.map(categories, CategoriesDto.class);
+		}
+		else
+			throw new ResourceNotFoundException("ProductCategory", "ProducCategoryKey", categoryKey);
 	}
 
 	@Override
@@ -49,9 +54,8 @@ public class CategoriesServiceImpl implements CategoriesService {
 		if (category != null) {
 			categoriesRepo.delete(category);
 			return category;
-		} else {
-			return null;
-		}
+		}else
+			throw new ResourceNotFoundException("ProductCategory", "ProducCategoryKey", categoryKey);
 	}
 
 	@Override
@@ -66,8 +70,8 @@ public class CategoriesServiceImpl implements CategoriesService {
 
 			return modelMapper.map(savedCategories, CategoriesDto.class);
 		}
-
-		return null;
+		else
+			throw new ResourceNotFoundException("ProductCategory", "ProducCategoryKey", categoriesKey);
 	}
 
 }

@@ -8,18 +8,16 @@ import org.springframework.stereotype.Service;
 
 import com.prod.dto.ProductTypeDto;
 import com.prod.entities.ProductType;
+import com.prod.exceptions.ResourceNotFoundException;
 import com.prod.repositories.ProductTypeRepository;
 
-
 @Service
-public class ProductTypeServiceImpl implements ProductTypeService{
-	
+public class ProductTypeServiceImpl implements ProductTypeService {
+
 	@Autowired
 	private ProductTypeRepository productTypeRepo;
 	@Autowired
-    private ModelMapper modelMapper;
-
-	
+	private ModelMapper modelMapper;
 
 	public ProductTypeServiceImpl(ProductTypeRepository productTypeRepo, ModelMapper modelMapper) {
 		super();
@@ -31,15 +29,17 @@ public class ProductTypeServiceImpl implements ProductTypeService{
 	public ProductTypeDto saveProductType(ProductTypeDto productTypeDto) {
 		ProductType productType = modelMapper.map(productTypeDto, ProductType.class);
 		ProductType savedProductType = productTypeRepo.save(productType);
-        return modelMapper.map(savedProductType, ProductTypeDto.class);
+		return modelMapper.map(savedProductType, ProductTypeDto.class);
 	}
-
 
 	@Override
 	public ProductTypeDto getProductTypeByKey(String productTypeKey) {
-		ProductType productType =productTypeRepo.findByProductTypeKey(productTypeKey);
-		
-		return modelMapper.map(productType, ProductTypeDto.class);
+		ProductType productType = productTypeRepo.findByProductTypeKey(productTypeKey);
+
+		if (productType != null) {
+			return modelMapper.map(productType, ProductTypeDto.class);
+		} else
+			throw new ResourceNotFoundException("ProductType", "ProducTypeKey", productTypeKey);
 	}
 
 	@Override
@@ -49,34 +49,30 @@ public class ProductTypeServiceImpl implements ProductTypeService{
 
 	@Override
 	public ProductType deleteProductTypeByKey(String productTypeKey) {
-		ProductType productType =productTypeRepo.findByProductTypeKey(productTypeKey);
-		if(productType!=null) {
+		ProductType productType = productTypeRepo.findByProductTypeKey(productTypeKey);
+		if (productType != null) {
 			productTypeRepo.delete(productType);
-			return productType; 
-		}else {
-		return null;
-		}
+			return productType;
+		} else
+			throw new ResourceNotFoundException("ProductType", "ProducTypeKey", productTypeKey);
+		
 	}
-
 
 	@Override
 	public ProductTypeDto updateProductTypeByKey(ProductTypeDto productTypeDto, String productTypeKey) {
 		ProductType existingProductType = productTypeRepo.findByProductTypeKey(productTypeKey);
-		
-		if (existingProductType!=null) {
+
+		if (existingProductType != null) {
 			existingProductType.setProductTypeName(productTypeDto.getProductTypeName());
 			existingProductType.setProductTypeKey(productTypeDto.getProductTypekey());
 			existingProductType.setAttributeDefination(productTypeDto.getAttributeDefination());
 			ProductType savedProductType = productTypeRepo.save(existingProductType);
-			
+
 			return modelMapper.map(savedProductType, ProductTypeDto.class);
 		}
-		
-		return null;
+
+		else
+			throw new ResourceNotFoundException("ProductType", "ProducTypeKey", productTypeKey);
 	}
-
-
-
-
 
 }

@@ -21,7 +21,7 @@ import com.prod.services.CategoriesService;
 @RestController
 @RequestMapping("/api/categories")
 public class CategoriesController {
-
+ 
 	
 	@Autowired
 	private CategoriesService categoriesService;
@@ -38,7 +38,7 @@ public class CategoriesController {
 	}
 	
 	@GetMapping("/{categoryKey}")
-    public ResponseEntity<CategoriesDto> getCategoryByKey(@PathVariable("categoryKey") String categoryKey){
+    public ResponseEntity<CategoriesDto> getCategoryByKey(@PathVariable String categoryKey){
 		CategoriesDto categoriesDto = categoriesService.getCategoryByKey(categoryKey);
          return ResponseEntity.ok(categoriesDto);
     }
@@ -49,14 +49,14 @@ public class CategoriesController {
 	}
 	
 	@DeleteMapping("/{categoryKey}")
-	public ResponseEntity<Categories> deleteCategoriesByKey(@PathVariable("categoryKey") String categoryKey) {
+	public ResponseEntity<Categories> deleteCategoriesByKey(@PathVariable String categoryKey) {
 		Categories category = categoriesService.deleteCategoriesByKey(categoryKey);
 		return ResponseEntity.ok(category);
 	}
 	
 	@PutMapping("/{categoriesKey}")
 	public ResponseEntity<CategoriesDto> updateCategoriesByKey(@RequestBody CategoriesDto categoriesDto,
-														@PathVariable("categoriesKey") String categoriesKey) {
+														@PathVariable String categoriesKey) {
 		CategoriesDto updateCategoriesDto = categoriesService.updateCategoriesByKey(categoriesDto,categoriesKey);
 		if (updateCategoriesDto != null) {
 	        return new ResponseEntity<>(updateCategoriesDto, HttpStatus.OK);

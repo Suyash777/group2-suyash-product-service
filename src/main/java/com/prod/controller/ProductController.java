@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.prod.dto.ProductDto;
-import com.prod.dto.ProductVariantDto;
 import com.prod.entities.Product;
-import com.prod.entities.ProductType;
 import com.prod.services.ProductService;
 
 @RestController
@@ -39,7 +37,7 @@ public class ProductController {
 	}
 	
 	@GetMapping("/{productKey}")
-    public ResponseEntity<ProductDto> getProductByKey(@PathVariable("productKey") String productKey){
+    public ResponseEntity<ProductDto> getProductByKey(@PathVariable String productKey){
 		ProductDto productDto = productService.getProductByKey(productKey);
          return ResponseEntity.ok(productDto);
     }
@@ -51,7 +49,7 @@ public class ProductController {
 	
 	@PutMapping("/{productKey}")
 	public ResponseEntity<ProductDto> updateProductByKey(@RequestBody ProductDto productDto,
-														@PathVariable("productKey") String productKey) {
+														@PathVariable String productKey) {
 		ProductDto updateProductDto = productService.updateProductByKey(productDto,productKey);
 		if (updateProductDto != null) {
 	        return new ResponseEntity<>(updateProductDto, HttpStatus.OK);
@@ -61,7 +59,7 @@ public class ProductController {
 	}
 	
 	@DeleteMapping("/{productKey}")
-	public ResponseEntity<Product> deleteProductByKey(@PathVariable("productKey") String productKey) {
+	public ResponseEntity<Product> deleteProductByKey(@PathVariable String productKey) {
 		Product product = productService.deleteProductByKey(productKey);
 		return ResponseEntity.ok(product);
 	}

@@ -37,7 +37,7 @@ public class ProductTypeController {
 	}
 
 	@GetMapping("/{productTypeKey}")
-	public ResponseEntity<ProductTypeDto> getProductTypeByKey(@PathVariable("productTypeKey") String productTypeKey) {
+	public ResponseEntity<ProductTypeDto> getProductTypeByKey(@PathVariable String productTypeKey) {
 		ProductTypeDto productTypeDto = productTypeService.getProductTypeByKey(productTypeKey);
 		return ResponseEntity.ok(productTypeDto);
 	}
@@ -49,14 +49,14 @@ public class ProductTypeController {
 	}
 
 	@DeleteMapping("/{productTypeKey}")
-	public ResponseEntity<ProductType> deleteProductTypeByKey(@PathVariable("productTypeKey") String productTypeKey) {
+	public ResponseEntity<ProductType> deleteProductTypeByKey(@PathVariable String productTypeKey) {
 		ProductType productType = productTypeService.deleteProductTypeByKey(productTypeKey);
 		return ResponseEntity.ok(productType);
 	}
 	
 	@PutMapping("/{productTypeKey}")
 	public ResponseEntity<ProductTypeDto> updateProductTypeByKey(@RequestBody ProductTypeDto productTypeDto,
-														@PathVariable("productTypeKey") String productTypeKey) {
+														@PathVariable String productTypeKey) {
 		ProductTypeDto updateProductTypeDto = productTypeService.updateProductTypeByKey(productTypeDto,productTypeKey);
 		if (updateProductTypeDto != null) {
 	        return new ResponseEntity<>(updateProductTypeDto, HttpStatus.OK);

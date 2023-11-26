@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.prod.dto.ProductDto;
 import com.prod.entities.Product;
 import com.prod.entities.ProductType;
+import com.prod.exceptions.ResourceNotFoundException;
 import com.prod.repositories.ProductRepository;
 import com.prod.repositories.ProductTypeRepository;
 
@@ -48,7 +49,11 @@ public class ProductServiceImpl implements ProductService {
 	public ProductDto getProductByKey(String productKey) {
 		Product product = productRepo.findByProductKey(productKey);
 
-		return modelMapper.map(product, ProductDto.class);
+		if(product!=null) {
+			return modelMapper.map(product,ProductDto.class);
+		}
+		else
+			throw new ResourceNotFoundException("Product", "ProductKey", productKey);
 	}
 
 	@Override
@@ -69,11 +74,10 @@ public class ProductServiceImpl implements ProductService {
 			existingProduct.setMasterVariant(productDto.getMasterVariant());
 			existingProduct.setVariants(productDto.getVariants());
 			Product savedProduct = productRepo.save(existingProduct);
-
 			return modelMapper.map(savedProduct, ProductDto.class);
 		}
-
-		return null;
+		else
+			throw new ResourceNotFoundException("Product", "ProducKey", productKey);
 	}
 
 	@Override
@@ -82,9 +86,8 @@ public class ProductServiceImpl implements ProductService {
 		if(product!=null) {
 			productRepo.delete(product);
 			return product; 
-		}else {
-		return null;
-		}
+		}else
+			throw new ResourceNotFoundException("Product", "ProducKey", productKey);
 	}
 
 }

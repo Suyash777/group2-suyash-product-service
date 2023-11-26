@@ -7,7 +7,7 @@ import java.util.Map;
 public class ProductTypeDto {
 
 	private String productTypeName;
-	private String productTypekey;
+	private String productTypekey; 
 	private Map<String,String> attributeDefination;
 	
 	

@@ -29,7 +29,7 @@ public class ProductVariantController {
 	
 	
 	@GetMapping("/{productVariantKey}")
-	public ResponseEntity<ProductVariantDto> getProductVariantByKey(@PathVariable("productVariantKey") String productVariantKey) {
+	public ResponseEntity<ProductVariantDto> getProductVariantByKey(@PathVariable String productVariantKey) {
 		ProductVariantDto productVariantDto = productVariantService.getProductVariantByKey(productVariantKey);
 		return ResponseEntity.ok(productVariantDto);
 	}
@@ -42,7 +42,7 @@ public class ProductVariantController {
 	
 	@PutMapping("/{productVariantKey}")
 	public ResponseEntity<ProductVariantDto> updateProductVaraintByKey(@RequestBody ProductVariantDto productVariantDto,
-														@PathVariable("productVariantKey") String productVariantKey) {
+														@PathVariable String productVariantKey) {
 		ProductVariantDto updateProductVariantDto = productVariantService.updateProductVariantByKey(productVariantDto,productVariantKey);
 		if (updateProductVariantDto != null) {
 	        return new ResponseEntity<>(updateProductVariantDto, HttpStatus.OK);
